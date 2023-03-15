@@ -1,0 +1,58 @@
+.nrv {
+  width: 100%;
+  max-width: 1400px;
+  margin: auto;
+  padding: 0 16px;
+
+  .nrv-header {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .nrv-header-left {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .nrv-header-npm {
+        font-size: 200px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    .nrv-header-right {
+      height: 40px;
+    }
+  }
+
+  .nrv-desc {
+    font-size: 24px;
+    margin-bottom: 24px;
+  }
+
+  .nrv-chart {
+    // height: 80px;
+  }
+  .nrv-table {
+    
+  }
+
+  .nrv-footer {
+    height: 80px;
+    white-space: pre-wrap;
+    word-break: break-word;
+
+    .nrv-footer-about {
+      margin-bottom: 24px;
+    }
+
+    .nrv-footer-copyright {
+      height: 100px;
+      padding: 20px 0;
+    }
+  }
+}

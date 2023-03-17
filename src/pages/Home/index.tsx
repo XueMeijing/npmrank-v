@@ -296,7 +296,7 @@ function Home() {
         <div className="nrv-footer-about">
           <h3>About</h3>
           <p className="nrv-content-detail">
-            <span>This project start from my first seen</span>
+            <span>This project comes from the first time I saw </span>
             <a href="https://www.npmjs.com/package/glob" target={'_blank'} rel="noreferrer">
               {' glob'}
             </a>

@@ -2,7 +2,7 @@
   width: 100%;
   max-width: 1400px;
   margin: auto;
-  padding: 0 16px;
+  padding: 0 60px;
 
   .nrv-header {
     height: 80px;
@@ -34,11 +34,19 @@
     margin-bottom: 24px;
   }
 
-  .nrv-chart {
-    // height: 80px;
-  }
   .nrv-table {
-    
+    width: 100%;
+    overflow: overlay;
+
+    .url-icon {
+      color: #555;
+      font-size: 24px;
+      line-height: 24px;
+
+      &:hover {
+        color: #1890ff;
+      }
+    }
   }
 
   .nrv-footer {
@@ -54,5 +62,21 @@
       height: 100px;
       padding: 20px 0;
     }
+  }
+
+  .nrv-content-detail {
+    line-height: 28px;
+  }
+}
+
+@media screen and (max-width: 991px) {
+  .nrv {
+    padding: 0 32px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nrv {
+    padding: 0 16px;
   }
 }

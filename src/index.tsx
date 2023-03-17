@@ -4,13 +4,11 @@ import reportWebVitals from './reportWebVitals';
 
 import './index.scss';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   // react18的useEffect在严格模式下执行两次
   // <React.StrictMode>
-    <App />
+  <App />
   // </React.StrictMode>
 );
 

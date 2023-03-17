@@ -2,6 +2,7 @@
   "name": "npmrank-v",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "@antv/g2": "^5.0.0-beta.13",
     "@babel/core": "^7.16.0",

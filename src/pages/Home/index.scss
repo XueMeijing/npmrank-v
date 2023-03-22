@@ -38,6 +38,10 @@
     width: 100%;
     overflow: overlay;
 
+    .ant-table-wrapper {
+      min-width: 1200px;
+    }
+
     .url-icon {
       color: #555;
       font-size: 24px;
@@ -49,23 +53,27 @@
     }
   }
 
-  .nrv-footer {
-    height: 80px;
+  .nrv-datasource {
+    margin-bottom: 24px;
     white-space: pre-wrap;
     word-break: break-word;
+  }
 
-    .nrv-footer-about {
-      margin-bottom: 24px;
-    }
+  .nrv-about {
+    margin-bottom: 24px;
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
 
-    .nrv-footer-copyright {
-      height: 100px;
-      padding: 20px 0;
+  .nrv-datasource, .nrv-about {
+    .nrv-content-detail {
+      line-height: 28px;
     }
   }
 
-  .nrv-content-detail {
-    line-height: 28px;
+  .nrv-copyright {
+    height: 100px;
+    padding: 20px 0;
   }
 }
 

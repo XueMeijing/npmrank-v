@@ -1,6 +1,18 @@
 import { useEffect, useState } from 'react';
-import * as echarts from 'echarts';
-import { Select, Table, Space } from 'antd';
+import * as echarts from 'echarts/core';
+import { 
+  BarChart
+} from 'echarts/charts';
+import {
+  TooltipComponent,
+  LegendComponent,
+  GridComponent,
+  DatasetComponent,
+  TransformComponent,
+} from 'echarts/components';
+import { LabelLayout, UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
+import { Select, Table, Space, Spin } from 'antd';
 import Icon, { GithubOutlined, HomeOutlined } from '@ant-design/icons';
 import type { ColumnsType } from 'antd/es/table';
 
@@ -12,6 +24,18 @@ import { ReactComponent as GithubIcon } from '../../assets/github.svg';
 import { ReactComponent as LinkNpmIcon } from '../../assets/link-npm.svg';
 
 import './index.scss';
+
+echarts.use([
+  TooltipComponent,
+  GridComponent,
+  LegendComponent,
+  DatasetComponent,
+  TransformComponent,
+  LabelLayout,
+  UniversalTransition,
+  CanvasRenderer,
+  BarChart,
+]);
 
 function Home() {
   const [rankingTypes, setRankingTypes] = useState<SelectRankingType[]>([]);
@@ -210,7 +234,7 @@ function Home() {
                 ] || '#5470c6'
               );
             },
-            barBorderRadius: [0, 18, 18, 0],
+            borderRadius: [0, 18, 18, 0],
           },
           data: data.map((item: RankingPackage) => item.downloads),
         },
@@ -262,7 +286,9 @@ function Home() {
           />
         </div>
         <h3>Chart</h3>
-        <div id="container" style={{ height: 700 }}></div>
+        <Spin spinning={spinning}>
+          <div id="container" style={{ height: 700 }}></div>
+        </Spin>
       </section>
 
       <section className="nrv-table">
@@ -277,67 +303,65 @@ function Home() {
         />
       </section>
 
-      <section className="nrv-footer">
-        <div className="nrv-footer-about">
-          <h3>Data Source</h3>
-          <p className="nrv-content-detail">
-            <span>All data comes directly from </span>
-            <a
-              href="https://github.com/npm/registry/blob/master/docs/download-counts.md"
-              target={'_blank'}
-              rel="noreferrer"
-            >
-              npm api
-            </a>
-            <span>, and will update at soon after UTC midnight, once per day.</span>
-          </p>
-        </div>
+      <section className="nrv-datasource">
+        <h3>Data Source</h3>
+        <p className="nrv-content-detail">
+          <span>All data comes directly from </span>
+          <a
+            href="https://github.com/npm/registry/blob/master/docs/download-counts.md"
+            target={'_blank'}
+            rel="noreferrer"
+          >
+            npm api
+          </a>
+          <span>, and will update at soon after UTC midnight, once per day.</span>
+        </p>
+      </section>
 
-        <div className="nrv-footer-about">
-          <h3>About</h3>
-          <p className="nrv-content-detail">
-            <span>This project comes from the first time I saw </span>
-            <a href="https://www.npmjs.com/package/glob" target={'_blank'} rel="noreferrer">
-              {' glob'}
-            </a>
-            <span>
-              , holy shit which downloads 80175979 times per week! At the same time react had only
-              15661554 times. Is glob the NO.1? So i googled and found
-            </span>
-            <a
-              href="https://gist.github.com/anvaka/8e8fa57c7ee1350e3491"
-              target={'_blank'}
-              rel="noreferrer"
-            >
-              {' anvaka '}
-            </a>
-            <span>
-              great work at 2019. He crawled all packages and statistics out top 1000 packages. I
-              just update their latest downloads and ranking. So there must some missing packages,
-              if you find some missing packages or any other questions, It will be very grateful to
-              open an issue.
-            </span>
-          </p>
-        </div>
+      <section className="nrv-about">
+        <h3>About</h3>
+        <p className="nrv-content-detail">
+          <span>This project comes from the first time I saw </span>
+          <a href="https://www.npmjs.com/package/glob" target={'_blank'} rel="noreferrer">
+            {' glob'}
+          </a>
+          <span>
+            , holy shit which downloads 80175979 times per week! At the same time react had only
+            15661554 times. Is glob the NO.1? So i googled and found
+          </span>
+          <a
+            href="https://gist.github.com/anvaka/8e8fa57c7ee1350e3491"
+            target={'_blank'}
+            rel="noreferrer"
+          >
+            {' anvaka '}
+          </a>
+          <span>
+            great work at 2019. He crawled all packages and statistics out top 1000 packages. I
+            just update their latest downloads and ranking. So there must some missing packages,
+            if you find some missing packages or any other questions, It will be very grateful to
+            open an issue.
+          </span>
+        </p>
+      </section>
 
-        <div className="nrv-footer-more">
-          <h3>More</h3>
-          <p className="nrv-content-detail">
-            <a href="https://npmtrends.com/" target={'_blank'} rel="noreferrer">
-              Compare package download counts over time
-            </a>
-          </p>
-          <p>
-            <a href="https://npm-stat.com/" target={'_blank'} rel="noreferrer">
-              Generate download charts for any package on npm.
-            </a>
-          </p>
-        </div>
+      <section className="nrv-more">
+        <h3>More</h3>
+        <p className="nrv-content-detail">
+          <a href="https://npmtrends.com/" target={'_blank'} rel="noreferrer">
+            Compare package download counts over time
+          </a>
+        </p>
+        <p>
+          <a href="https://npm-stat.com/" target={'_blank'} rel="noreferrer">
+            Generate download charts for any package on npm.
+          </a>
+        </p>
+      </section>
 
-        <div className="nrv-footer-copyright">
-          <span>&copy; 2023 – {new Date().getFullYear()}</span>
-          <a href="https://github.com/XueMeijing"> XueMeijing</a>
-        </div>
+      <section className="nrv-copyright">
+        <span>&copy; 2023 – {new Date().getFullYear()}</span>
+        <a href="https://github.com/XueMeijing"> XueMeijing</a>
       </section>
     </div>
   );
